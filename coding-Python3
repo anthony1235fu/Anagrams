@@ -1,0 +1,27 @@
+import numpy as np
+import pandas as pd
+
+def turn_dict(alist):
+    dict = {}
+    for word in alist:
+        dict[word] = sorted(list(word))
+    return dict
+#To identify whether two words are anagrams, we need to compare their characters, and there are two ways to
+#compare, one is to compare the frequency of each letter; the other one is to sorted the word letter, and 
+#compare the letters in order
+
+def compare_list(words, queries):
+    word_dict = turn_dict(words)
+    query_dict = turn_dict(queries)
+    output = []
+    for x in query_dict.keys():
+        for y in word_dict.keys():
+            if query_dict[x] == word_dict[y]:
+                output.append([x,y])
+    print(output)
+                
+#print(word_dict,query_dict,query)
+
+words = ['dleu','task','speed','money','apple','electricity']
+queries = ['dule','seped','electrciity']
+compare_list(words, queries)
